@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class SoundScript : MonoBehaviour
 {
-    public AudioSource audioSource;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !audioSource.isPlaying)
+        if (other.gameObject.tag == "Player")
+        {
+            this.GetComponent<AudioSource>().Play();
+        }
+        else
+        {
 
-            audioSource.Play();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            this.GetComponent<AudioSource>().Stop();
+        }
+        else
+        {
+
+        }
+
     }
 }
